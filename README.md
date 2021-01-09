@@ -1,0 +1,2 @@
+# DiscordChat
+DiscordChat for Obsidian
