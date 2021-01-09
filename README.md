@@ -1,2 +1,1 @@
-# DiscordChat
-DiscordChat for Obsidian
+# DiscordChat for Obsidian
