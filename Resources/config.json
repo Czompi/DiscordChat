@@ -1,0 +1,9 @@
+{
+  "token": "",
+  "channel_id": 0,
+  "chat_format": {
+    "discord": "**<{username}>** {message}",
+    "minecraft": "§9<§r{username}§9>§r {message}"
+  },
+  "message_sync_interval": 1
+}

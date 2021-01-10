@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "DiscordChat": {
+      "commandName": "Executable",
+      "executablePath": "D:\\GitHub.ObsidianServer\\Obsidian\\Obsidian\\bin\\Debug\\net5.0\\Obsidian.exe",
+      "workingDirectory": "D:\\GitHub.ObsidianServer\\Obsidian\\Obsidian\\bin\\Debug\\net5.0"
+    }
+  }
+}
