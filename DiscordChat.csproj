@@ -1,35 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Configurations>Debug;Release;Snapshot</Configurations>
-    <Version>0.0.1</Version>
-    <Authors>Czompi</Authors>
-    <Company>Czompi</Company>
-    <Product>DiscordChat</Product>
-    <LangVersion>9.0</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<Configurations>Debug;Release;Snapshot</Configurations>
+		<Version>0.0.1</Version>
+		<Authors>Czompi</Authors>
+		<Company>Czompi</Company>
+		<Product>DiscordChat</Product>
+		<LangVersion>9.0</LangVersion>
+	</PropertyGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <ItemGroup>
-      <FilesToDelete Include="$(OutputPath)..\..\..\..\..\GitHub.ObsidianServer\Obsidian\Obsidian\bin\Debug\net5.0\Server-0\plugins\$(AssemblyName.ToLower())-*.dll" />
-    </ItemGroup>
-	<Delete Files="$(FilesToDelete)" />
-    <!--<Move SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFiles="$(OutputPath)..\..\$(AssemblyName)-$(Configuration.ToLower()).pdb" />-->
-    <Move SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFiles="$(OutputPath)..\..\$(AssemblyName.ToLower())-$(Version)-$(Configuration.ToLower()).dll" />
-    <Copy SourceFiles="$(OutputPath)..\..\$(AssemblyName.ToLower())-$(Version)-$(Configuration.ToLower()).dll" DestinationFiles="$(OutputPath)..\..\..\..\..\GitHub.ObsidianServer\Obsidian\Obsidian\bin\Debug\net5.0\Server-0\plugins\$(AssemblyName.ToLower())-$(Version)-$(Configuration.ToLower()).dll" />
-  </Target>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<FilesToDelete Include="$(OutputPath)..\..\..\..\..\GitHub.ObsidianServer\Obsidian\Obsidian\bin\Debug\net5.0\Server-0\plugins\$(AssemblyName.ToLower())-*.dll" />
+		</ItemGroup>
+		<Delete Files="$(FilesToDelete)" />
+		<!--<Move SourceFiles="$(OutputPath)$(AssemblyName).pdb" DestinationFiles="$(OutputPath)..\..\$(AssemblyName)-$(Configuration.ToLower()).pdb" />-->
+		<Move SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFiles="$(OutputPath)..\..\$(AssemblyName.ToLower())-$(Version)-$(Configuration.ToLower()).dll" />
+		<Copy SourceFiles="$(OutputPath)..\..\$(AssemblyName.ToLower())-$(Version)-$(Configuration.ToLower()).dll" DestinationFiles="$(OutputPath)..\..\..\..\..\GitHub.ObsidianServer\Obsidian\Obsidian\bin\Debug\net5.0\Server-0\plugins\$(AssemblyName.ToLower())-$(Version)-$(Configuration.ToLower()).dll" />
+	</Target>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Langs\*.json" />
-    <EmbeddedResource Include="Resources\*.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\Langs\*.json" />
+		<EmbeddedResource Include="Resources\*.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<PackageReference Include="DSharpPlus" Version="4.0.0-rc1"/>
-	<PackageReference Include="Obsidian.API" Version="1.0.0" />
-	<PackageReference Include="System.Text.Json" Version="5.0.0">
-	  <Private>false</Private>
-	</PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Obsidian.API">
+			<HintPath>..\..\GitHub.ObsidianMC\Obsidian\Obsidian.API\bin\Debug\net5.0\Obsidian.API.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="DSharpPlus" Version="4.0.0-rc1"/>
+		<PackageReference Include="System.Text.Json" Version="5.0.0">
+			<Private>false</Private>
+		</PackageReference>
+	</ItemGroup>
 </Project>

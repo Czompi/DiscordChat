@@ -1,25 +1,22 @@
 ﻿using DiscordChat.Settings;
 using Obsidian.API;
-using Obsidian.CommandFramework;
-using Obsidian.CommandFramework.Attributes;
-using Obsidian.CommandFramework.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DiscordChat.Commands
 {
-    public class DiscordCommandModule : BaseCommandClass
+    public class DiscordCommandModule
     {
 
         #region /discord <reload|debug|commands>
         [Command("DiscordChat", "discord")]
         [CommandInfo("DiscordChat available commands.", "/discord <reload|debug|commands>")]
 
-        public async Task DiscordAsync(ObsidianContext Context) => await Context.Player.SendMessageAsync(Globals.RenderCommandUsage("/DiscordChat <reload|debug|commands>"));
+        public async Task DiscordAsync(CommandContext Context) => await Context.Player.SendMessageAsync(Globals.RenderCommandUsage("/DiscordChat <reload|debug|commands>"));
 
         [CommandOverload]
-        public async Task DiscordAsync(ObsidianContext Context, [Remaining] string args_)
+        public async Task DiscordAsync(CommandContext Context, [Remaining] string args_)
         {
             var args = args_.Contains(" ") ? args_.Split(" ").ToList() : new List<string> { args_ };
             var chatMessage = IChatMessage.Simple("");
